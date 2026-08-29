@@ -1,0 +1,3 @@
+id = "go-web-service"
+version = "1.0.0"
+extends = ["../go-base", "../http-service", "../containerized-deployment"]

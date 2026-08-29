@@ -1,0 +1,3 @@
+id = "python-typescript-app"
+version = "1.0.0"
+extends = ["../python-service-application", "../typescript-web-application"]

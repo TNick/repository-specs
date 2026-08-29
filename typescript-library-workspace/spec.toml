@@ -1,0 +1,3 @@
+id = "typescript-library-workspace"
+version = "1.0.0"
+extends = ["../workspace-base", "../typescript-base"]

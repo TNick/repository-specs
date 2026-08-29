@@ -1,0 +1,3 @@
+id = "schema-driven-polyglot-workspace"
+version = "1.0.0"
+extends = ["../workspace-base", "../python-base", "../typescript-base"]
