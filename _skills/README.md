@@ -49,9 +49,25 @@ Maintain this catalog itself: choose between a foundation, capability, and
 profile; minimize duplicated requirements; edit `spec.toml` inheritance; and
 validate the catalog graph and documentation.
 
+### [adopt-multilingual-web](adopt-multilingual-web/SKILL.md)
+
+Adopt the opt-in multilingual web capability in a frontend/backend
+application. Preserve useful locale work while adding ICU messages, one locale
+authority, backend-served catalogs, localized content identity, and tests.
+
+### [audit-multilingual-web](audit-multilingual-web/SKILL.md)
+
+Audit a web application's multilingual implementation across catalogs,
+backend delivery, locale selection, localized content, headers, metadata,
+formatting, and per-locale test coverage.
+
 ## Recommended use order
 
 Start with `audit-repository-spec`, `adopt-repository-spec`, and
 `manage-design-records`. They establish discovery, inheritance resolution, and
 the documentation workflow used by the remaining skills. Add evaluation cases
 before making further changes to these skills.
+
+For the opt-in multilingual capability, run `audit-multilingual-web` before
+`adopt-multilingual-web` when the consuming application already contains
+locale code or translated content.

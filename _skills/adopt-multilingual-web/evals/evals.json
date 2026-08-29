@@ -1,0 +1,19 @@
+{
+  "skill_name": "adopt-multilingual-web",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "react-fastapi-adoption",
+      "prompt": "Adopt the multilingual web specification in this React and FastAPI application. It has embedded English and Romanian messages, localized backend content, and no backend catalog endpoint.",
+      "expected_output": "Inventory existing behavior, preserve useful content identity, choose an ICU-capable frontend path, create backend-served revisioned catalogs, and add focused validation and tests.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "eval_name": "modular-catalog-migration",
+      "prompt": "This monorepo has package-owned translation bundles and a custom placeholder translator. Bring it toward the multilingual web specification in safe increments.",
+      "expected_output": "Retain modular bundle ownership, replace message evaluation with ICU semantics, establish one locale authority, reject duplicate keys, and avoid a broad string rewrite.",
+      "files": []
+    }
+  ]
+}

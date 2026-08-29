@@ -1,0 +1,19 @@
+{
+  "skill_name": "audit-multilingual-web",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "embedded-catalog-audit",
+      "prompt": "Audit this bilingual React application. It embeds both locales in TypeScript and uses a lang query parameter for backend content.",
+      "expected_output": "Assess ICU semantics, backend catalog delivery, locale authority, explicit precedence, response headers, stable content identity, and tests with evidence.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "eval_name": "false-multilingual-claim",
+      "prompt": "The application advertises four locales, but some catalogs and browser flows may be incomplete. Audit its multilingual compliance without changing code.",
+      "expected_output": "Inspect every published locale, refuse to infer completeness from configuration, and provide evidence and acceptance conditions for each gap.",
+      "files": []
+    }
+  ]
+}
