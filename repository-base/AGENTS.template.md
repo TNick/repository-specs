@@ -3,6 +3,12 @@
 Read the repository root `AGENTS.md` and the linked repository specification
 before making changes. Keep temporary work under `playground/agentic-work/`.
 
+Before changing code, locate the project's design records. Public records are
+in `design/`; private records are in `playground/design/` when the root
+`README.md` or `AGENTS.md` declares `Design records: private`. Read the
+applicable numbered design and plan records, and update the gap review and
+derived plan when the implementation changes or extends the design.
+
 ## Repository specification
 
 This repository adheres to:
