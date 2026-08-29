@@ -1,0 +1,19 @@
+{
+  "skill_name": "audit-systemd-deployment",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "repository-only-audit",
+      "prompt": "Audit this repository's systemd deployment without connecting to its production host.",
+      "expected_output": "Inspect committed units and automation, distinguish repository evidence from unverified live state, and report testable gaps without operating the service.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "eval_name": "user-service-live-audit",
+      "prompt": "Read-only audit this systemd user service and compare the live unit with the repository deployment assets.",
+      "expected_output": "Use the correct user manager scope, inspect unit and drop-ins without mutations, compare release identity and configuration ownership, and separate drift from specification gaps.",
+      "files": []
+    }
+  ]
+}

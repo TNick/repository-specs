@@ -1,0 +1,19 @@
+{
+  "skill_name": "adopt-systemd-deployment",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "existing-system-service",
+      "prompt": "Adopt the systemd deployment specification for this FastAPI service. It has a hand-copied unit, a root-owned env file, and an SSH restart script.",
+      "expected_output": "Inventory the live and committed state read-only, preserve operator configuration, add offline verification, idempotent staged deployment, health checks, release identity, hardening analysis, and rollback.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "eval_name": "user-worker-service",
+      "prompt": "Bring this existing systemd --user worker deployment under the capability without changing it to a system service.",
+      "expected_output": "Retain user scope, document lingering and session assumptions, use the correct manager commands, separate secrets, and establish safe verification and rollback.",
+      "files": []
+    }
+  ]
+}

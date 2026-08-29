@@ -51,6 +51,7 @@ perform inheritance or merge documents.
 - [http-service](http-service/SPEC.md)
 - [relational-persistence](relational-persistence/SPEC.md)
 - [containerized-deployment](containerized-deployment/SPEC.md)
+- [systemd-deployment](systemd-deployment/SPEC.md)
 - [multilingual-web-application](multilingual-web-application/SPEC.md)
 
 ### Profiles

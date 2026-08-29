@@ -61,6 +61,17 @@ Audit a web application's multilingual implementation across catalogs,
 backend delivery, locale selection, localized content, headers, metadata,
 formatting, and per-locale test coverage.
 
+### [adopt-systemd-deployment](adopt-systemd-deployment/SKILL.md)
+
+Adopt the opt-in systemd deployment capability while preserving an existing
+service topology. Establish unit ownership, configuration boundaries, safe
+rollout and rollback, verification, and operator commands.
+
+### [audit-systemd-deployment](audit-systemd-deployment/SKILL.md)
+
+Audit system or user services, deployment automation, secrets, hardening,
+release identity, rollback, health checks, and operational documentation.
+
 ## Recommended use order
 
 Start with `audit-repository-spec`, `adopt-repository-spec`, and
@@ -71,3 +82,7 @@ before making further changes to these skills.
 For the opt-in multilingual capability, run `audit-multilingual-web` before
 `adopt-multilingual-web` when the consuming application already contains
 locale code or translated content.
+
+For an existing Linux service deployment, run `audit-systemd-deployment`
+before `adopt-systemd-deployment`. Unit changes can interrupt a live service,
+so adoption begins with read-only inspection and a recorded rollout plan.
