@@ -5,6 +5,6 @@ help:
 	@echo "test      Run catalog validation"
 
 validate:
-	python scripts/validate_catalog.py
+	python _scripts/validate_catalog.py
 
 test: validate

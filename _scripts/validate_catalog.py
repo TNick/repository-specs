@@ -21,6 +21,7 @@ def main() -> int:
         if (
             path.is_dir()
             and path.name != ".git"
+            and not path.name.startswith("_")
             and (path / "spec.toml").exists()
         )
     ]

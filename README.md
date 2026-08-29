@@ -7,6 +7,11 @@ relative links, while consuming repositories reference a released GitHub tree:
 
 `https://github.com/TNick/repository-specs/tree/v1.0.0/<spec-id>`
 
+Top-level directories whose names start with an underscore contain catalog
+support material and are not specifications. Catalog maintenance commands live
+in `_scripts/`; reusable skills for agents working in consuming repositories
+live in [`_skills/`](_skills/README.md).
+
 ## Composition and inheritance
 
 The authoritative inheritance declaration is the `spec.toml` file inside each
@@ -71,4 +76,4 @@ requires them. Prefer importing a shared rule over copying it. Copy an
 `AGENTS.template.md` file into a consuming repository as `AGENTS.md`, replace
 its `{{SPECIFICATION_URL}}` placeholder with the tag-pinned URL, and then
 customize only the project-specific instructions. Run
-`python scripts/validate_catalog.py` before committing.
+`python _scripts/validate_catalog.py` before committing.
