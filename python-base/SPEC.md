@@ -44,7 +44,12 @@ truth and target a supported, explicitly declared Python version.
 ```python
 """Validate a project name against repository naming rules."""
 
-from typing import Final
+from __future__ import annotations
+
+from typing import TYPE_CHECKING, Final
+
+if TYPE_CHECKING:
+    from .models import Project
 
 
 MAX_NAME_LENGTH: Final = 80
@@ -77,6 +82,19 @@ class NameValidator:
 
         # Enforce the configured maximum length.
         return len(name) <= self.max_length
+
+    def project_name(self, project: Project) -> str:
+        """Return the display name from a typed project model.
+
+        Args:
+            project: Project model imported only during type checking.
+
+        Returns:
+            The project's display name.
+        """
+
+        # Read the value through the typed model interface.
+        return project.name
 ```
 
 Avoid undocumented private helpers, docstrings whose summary starts below

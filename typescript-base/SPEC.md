@@ -39,6 +39,18 @@ manager.
 ## Preferred example
 
 ```typescript
+/** A stable identifier for a project. */
+type ProjectId = string;
+
+/** A project returned by the service. */
+interface Project {
+  /** Stable project identifier. */
+  id: ProjectId;
+
+  /** Human-readable project name. */
+  name: string;
+}
+
 /**
  * Options used when loading a project.
  *
@@ -53,21 +65,46 @@ interface LoadOptions {
   includeDrafts: boolean;
 }
 
-/**
- * Load a project from the API.
+/** Client for the project service.
  *
- * @param options - Request options.
- * @returns The loaded project.
+ * This class centralizes request construction and response validation.
  */
-export async function loadProject(options: LoadOptions): Promise<Project> {
+class ProjectClient {
+  /** API base URL. */
+  private readonly baseUrl: string;
 
-  // Build the request from the validated options.
-  const query = new URLSearchParams({
-    projectId: options.projectId,
-  });
+  /** Create a project client.
+   *
+   * @param baseUrl - API base URL.
+   */
+  constructor(baseUrl: string) {
 
-  // Send the request and decode the project response.
-  return fetch(`/api/projects?${query}`).then((response) => response.json());
+    // Store the normalized URL for subsequent requests.
+    this.baseUrl = baseUrl.replace(/\/$/, "");
+  }
+
+  /** Load a project by identifier.
+   *
+   * @param projectId - Project to load.
+   * @returns The loaded project.
+   * @throws {Error} If the API rejects the request.
+   */
+  async load(projectId: ProjectId): Promise<Project> {
+
+    // Build the request URL from the validated identifier.
+    const url = `${this.baseUrl}/api/projects/${projectId}`;
+
+    // Send the request and inspect the HTTP result.
+    const response = await fetch(url);
+
+    // Convert an unsuccessful response into a useful exception.
+    if (!response.ok) {
+      throw new Error(`Project request failed: ${response.status}`);
+    }
+
+    // Decode the validated project response.
+    return response.json() as Promise<Project>;
+  }
 }
 ```
 
