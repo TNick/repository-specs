@@ -18,7 +18,11 @@ def main() -> int:
     specs = [
         path
         for path in ROOT.iterdir()
-        if path.is_dir() and path.name != ".git" and (path / "spec.toml").exists()
+        if (
+            path.is_dir()
+            and path.name != ".git"
+            and (path / "spec.toml").exists()
+        )
     ]
 
     for spec in specs:
@@ -54,12 +58,16 @@ def main() -> int:
         for path in spec.rglob("*"):
             if path.is_file():
                 text = path.read_text(encoding="utf-8")
-                if path.suffix.lower() in {".md", ".toml", ".yaml", ".yml", ".json"} and any(
-                    marker in text for marker in LOCAL_PATH_MARKERS
-                ):
-                    errors.append(f"local path in {path.relative_to(ROOT)}")
+                text_suffix = path.suffix.lower()
+                if text_suffix in {".md", ".toml", ".yaml", ".yml", ".json"}:
+                    has_local_path = any(
+                        marker in text for marker in LOCAL_PATH_MARKERS
+                    )
+                    if has_local_path:
+                        errors.append(f"local path in {path.relative_to(ROOT)}")
                 if not text.endswith("\n"):
-                    errors.append(f"missing final newline: {path.relative_to(ROOT)}")
+                    relative = path.relative_to(ROOT)
+                    errors.append(f"missing final newline: {relative}")
 
     if errors:
         for error in errors:
