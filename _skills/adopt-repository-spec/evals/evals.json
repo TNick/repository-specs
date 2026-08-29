@@ -1,0 +1,19 @@
+{
+  "skill_name": "adopt-repository-spec",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "new-python-service",
+      "prompt": "A new Python API repository needs to adopt repository-specs. Choose the right profile, configure AGENTS.md, and explain what design files should be created.",
+      "expected_output": "Select a profile, resolve inherited specs, use the template placeholder workflow, and declare design visibility.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "eval_name": "existing-mixed-repo",
+      "prompt": "Audit this existing repository enough to choose both backend and frontend profiles, then prepare it for adherence without changing application code.",
+      "expected_output": "Choose composable profiles, explain transitive inheritance, and report remaining gaps without code edits.",
+      "files": []
+    }
+  ]
+}

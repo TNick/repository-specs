@@ -1,0 +1,19 @@
+{
+  "skill_name": "author-repository-spec",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "new-capability",
+      "prompt": "Add a capability specification for a shared HTTP concern without duplicating repository-base rules.",
+      "expected_output": "Choose the right layer, declare direct inheritance, and update validation/docs/templates.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "eval_name": "redundant-extends",
+      "prompt": "Review a profile whose direct extends list includes an ancestor already reached transitively.",
+      "expected_output": "Remove only the obvious redundancy, preserve meaningful parents, and validate the graph.",
+      "files": []
+    }
+  ]
+}

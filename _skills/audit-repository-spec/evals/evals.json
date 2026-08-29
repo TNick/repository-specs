@@ -1,0 +1,19 @@
+{
+  "skill_name": "audit-repository-spec",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "missing-pinned-url",
+      "prompt": "This repository has no specification URL in AGENTS.md. Audit it against repository-specs and produce the first gap review.",
+      "expected_output": "Report missing adoption, avoid pretending an unselected profile is known, and provide evidence-based next steps.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "eval_name": "private-design-audit",
+      "prompt": "Audit this project against its pinned profile. Its root instructions say design records are private.",
+      "expected_output": "Read the effective graph and write findings under playground/design with status classifications and acceptance conditions.",
+      "files": []
+    }
+  ]
+}

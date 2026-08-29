@@ -1,0 +1,19 @@
+{
+  "skill_name": "upgrade-repository-spec",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "tag-upgrade",
+      "prompt": "Upgrade a project from repository-specs v1.0.0 to v1.1.0 and identify all inherited changes before editing AGENTS.md.",
+      "expected_output": "Compare both transitive graphs, create migration documentation, and delay the URL update until ready.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "eval_name": "profile-change",
+      "prompt": "The project no longer fits its current profile and needs a different one.",
+      "expected_output": "Explain the profile change, preserve project instructions, and produce an implementation plan.",
+      "files": []
+    }
+  ]
+}

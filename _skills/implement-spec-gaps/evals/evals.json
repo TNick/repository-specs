@@ -1,0 +1,19 @@
+{
+  "skill_name": "implement-spec-gaps",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "accepted-plan",
+      "prompt": "Implement plan 0101 from the accepted gap review. Run focused and full checks, then update the records.",
+      "expected_output": "Read the plan first, make bounded changes, test them, and report remaining gaps.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "eval_name": "scope-conflict",
+      "prompt": "The plan conflicts with an existing project-specific decision. Implement only compatible work and document the discrepancy.",
+      "expected_output": "Preserve the existing decision, record the conflict, and do not silently override the design.",
+      "files": []
+    }
+  ]
+}

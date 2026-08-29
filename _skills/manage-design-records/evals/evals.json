@@ -1,0 +1,19 @@
+{
+  "skill_name": "manage-design-records",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "initial-design",
+      "prompt": "Create the first public design record and a derived implementation plan for a new project.",
+      "expected_output": "Use correct locations, numbering, metadata, and a clear parent relationship.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "eval_name": "precedence-conflict",
+      "prompt": "A newer gap review conflicts with an older initial design and its 0101 plan. Reconcile the records.",
+      "expected_output": "Apply top-level precedence and child scope correctly while retaining history.",
+      "files": []
+    }
+  ]
+}
