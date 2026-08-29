@@ -44,6 +44,16 @@ def main() -> int:
                     errors.append(f"missing import {imported}: {spec.name}")
         if (spec / "AGENTS.template.md").exists() is False:
             errors.append(f"missing AGENTS.template.md: {spec.name}")
+        else:
+            template = (spec / "AGENTS.template.md").read_text(
+                encoding="utf-8"
+            )
+            expected_url = (
+                "https://github.com/TNick/repository-specs/tree/"
+                f"v1.0.0/{spec.name}"
+            )
+            if expected_url not in template:
+                errors.append(f"missing specification URL: {spec.name}")
         markdown = spec / "SPEC.md"
         if markdown.exists():
             headings: list[str] = []

@@ -8,6 +8,8 @@ This is the foundation imported by every repository profile.
   troubleshooting.
 - Keep durable agent rules in `AGENTS.md`; nested directories may add scoped
   rules without contradicting the root.
+- Root `AGENTS.md` MUST contain a tag-pinned GitHub URL for every repository
+  specification the project adopts.
 - Provide one authoritative set of `init`, `test`, `lint`, and formatting
   commands through a root `Makefile` or documented equivalent.
 - Keep tests separate from production code and keep experiments under an
@@ -20,4 +22,8 @@ This is the foundation imported by every repository profile.
 ## Agent workspace
 
 Agents store temporary notes, scripts, logs, and fixtures in a timestamped
-directory under `playground/agentic-work/`. They do not delete prior work.
+`YYYY-MM-DD HH-MM-SS description` directory under
+`playground/agentic-work/`, where description is no longer than 40
+characters. They do not delete prior work. A brief README.md inside this
+timestamped directory explains the goals, any hiccups, workarounds and
+solutions.
