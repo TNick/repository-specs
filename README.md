@@ -7,6 +7,26 @@ relative links, while consuming repositories reference a released GitHub tree:
 
 `https://github.com/TNick/repository-specs/tree/v1.0.0/<spec-id>`
 
+## Composition and inheritance
+
+The authoritative inheritance declaration is the `spec.toml` file inside each
+specification folder. Its `extends` entries are relative paths to the direct
+parent specifications; they are not inferred from Markdown links or folder
+names. A specification inherits the requirements of every specification in
+its transitive `extends` graph.
+
+For example, the effective requirements for `python-library` are composed as:
+
+```text
+python-library → python-base → repository-base
+```
+
+A consuming repository normally references the released URL of its selected
+profile. Agents must read that profile's `spec.toml`, follow its `extends`
+entries, and read the inherited `SPEC.md` files as well. The catalog is
+composable metadata and documentation; the GitHub folder URL does not itself
+perform inheritance or merge documents.
+
 ## Catalog
 
 ### Foundation
