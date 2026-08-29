@@ -37,3 +37,41 @@ truth and target a supported, explicitly declared Python version.
 - Code MUST be divided into short logical blocks. A block should start after
   a blank line and have a preceding comment when its purpose is not obvious;
   avoid trailing inline comments.
+
+## Preferred example
+
+```python
+"""Validate a project name against repository naming rules."""
+
+from typing import Final
+
+
+MAX_NAME_LENGTH: Final = 80
+
+
+class NameValidator:
+    """Validate names used by a project.
+
+    Attributes:
+        max_length: Maximum permitted name length.
+        _allow_unicode: Whether non-ASCII letters are accepted.
+    """
+
+    max_length: int
+    _allow_unicode: bool
+
+    def validate(self, name: str) -> bool:
+        """Return whether ``name`` satisfies the validator's rules.
+
+        Args:
+            name: Candidate project name.
+
+        Returns:
+            True when the name is valid.
+        """
+        return bool(name) and len(name) <= self.max_length
+```
+
+Avoid undocumented private helpers, docstrings whose summary starts below
+the opening quotes, untyped arguments, and a monolithic module that exceeds
+400 lines. Split such a module into focused files and re-export its API.

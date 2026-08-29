@@ -34,3 +34,40 @@ manager.
   wrap at 80 columns; avoid trailing inline comments.
 - Keep generated declarations and API clients clearly marked and do not edit
   them manually.
+
+## Preferred example
+
+```typescript
+/**
+ * Options used when loading a project.
+ *
+ * @property projectId - Stable project identifier.
+ * @property includeDrafts - Whether draft documents are included.
+ */
+interface LoadOptions {
+  /** Stable project identifier. */
+  projectId: string;
+
+  /** Whether draft documents are included. */
+  includeDrafts: boolean;
+}
+
+/**
+ * Load a project from the API.
+ *
+ * @param options - Request options.
+ * @returns The loaded project.
+ */
+export async function loadProject(options: LoadOptions): Promise<Project> {
+  // Build the request from the validated options.
+  const query = new URLSearchParams({
+    projectId: options.projectId,
+  });
+
+  return fetch(`/api/projects?${query}`).then((response) => response.json());
+}
+```
+
+Avoid undocumented private members, props, type aliases, nested functions, or
+arrow functions. Avoid one-line comments after code and files that grow past
+400 lines; split them into focused modules while preserving exports.
