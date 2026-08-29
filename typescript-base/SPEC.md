@@ -30,8 +30,9 @@ manager.
 - React components MUST be documented. Components with props SHOULD declare a
   documented interface for those props above the component.
 - Logical blocks SHOULD begin after a blank line and a short `//` comment
-  when their purpose is not obvious. Standalone comments and JSDoc lines MUST
-  wrap at 80 columns; avoid trailing inline comments.
+  that briefly explains their purpose, followed by one to five lines of code.
+  Standalone comments and JSDoc lines MUST wrap at 80 columns; avoid trailing
+  inline comments.
 - Keep generated declarations and API clients clearly marked and do not edit
   them manually.
 
@@ -59,11 +60,13 @@ interface LoadOptions {
  * @returns The loaded project.
  */
 export async function loadProject(options: LoadOptions): Promise<Project> {
+
   // Build the request from the validated options.
   const query = new URLSearchParams({
     projectId: options.projectId,
   });
 
+  // Send the request and decode the project response.
   return fetch(`/api/projects?${query}`).then((response) => response.json());
 }
 ```
@@ -71,3 +74,22 @@ export async function loadProject(options: LoadOptions): Promise<Project> {
 Avoid undocumented private members, props, type aliases, nested functions, or
 arrow functions. Avoid one-line comments after code and files that grow past
 400 lines; split them into focused modules while preserving exports.
+
+The block rule applies to cohesive operations, not every individual line.
+Imports, decorators, adjacent declarations, continuation clauses such as
+`else`, `catch`, and `finally`, closing delimiters, generated code, and
+formatter-required constructs are exempt when a comment would add no meaning.
+A block longer than five lines should be split into smaller operations or
+have a documented reason to remain together.
+
+## Enforcement
+
+- ESLint MUST use `jsdoc/require-jsdoc`, `jsdoc/require-param`,
+  `jsdoc/require-returns`, and the TypeScript-aware equivalents for the
+  repository's supported syntax.
+- ESLint MUST enforce `max-lines` for the 400-line limit and `max-len` where
+  Prettier does not provide the check. Prettier MUST run in check mode in CI.
+- A repository MUST provide a checked-in custom ESLint rule or equivalent
+  script for the blank-line/comment/block-size convention; ESLint's generic
+  comment rules cannot infer logical intent reliably.
+- CI and pre-commit MUST invoke the same checks as the developer lint command.

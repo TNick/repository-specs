@@ -35,8 +35,9 @@ truth and target a supported, explicitly declared Python version.
   are exempt. Split an oversized module into a package while re-exporting its
   public API.
 - Code MUST be divided into short logical blocks. A block should start after
-  a blank line and have a preceding comment when its purpose is not obvious;
-  avoid trailing inline comments.
+  a blank line, then a one- or two-line comment that briefly explains its
+  purpose, followed by one to five lines of code. Avoid trailing inline
+  comments.
 
 ## Preferred example
 
@@ -69,9 +70,31 @@ class NameValidator:
         Returns:
             True when the name is valid.
         """
-        return bool(name) and len(name) <= self.max_length
+
+        # Reject empty names before applying the length rule.
+        if not name:
+            return False
+
+        # Enforce the configured maximum length.
+        return len(name) <= self.max_length
 ```
 
 Avoid undocumented private helpers, docstrings whose summary starts below
 the opening quotes, untyped arguments, and a monolithic module that exceeds
 400 lines. Split such a module into focused files and re-export its API.
+
+The block rule applies to cohesive operations, not every individual line.
+Imports, decorators, adjacent declarations, continuation clauses such as
+`else` and `finally`, closing delimiters, and generated code are exempt when a
+comment would add no meaning. A block longer than five lines should be split
+into smaller operations or have a documented reason to remain together.
+
+## Enforcement
+
+- Ruff MUST enable its `D` docstring rules with the Google convention,
+  annotation rules, and an 80-character limit. `ruff format --check` MUST run
+  in the normal lint command.
+- A repository MUST run a checked-in script that enforces the 400-line limit
+  and the blank-line/comment/block-size convention. Formatter output alone is
+  not sufficient to enforce this semantic layout rule.
+- CI and pre-commit MUST invoke the same checks as the developer lint command.
