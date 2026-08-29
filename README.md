@@ -47,5 +47,8 @@ publishes a library and runs a service, or contains both a backend and UI.
 ## Contribution
 
 Keep requirements normative and technology-specific only where the profile
-requires them. Prefer importing a shared rule over copying it. Run
+requires them. Prefer importing a shared rule over copying it. Copy an
+`AGENTS.template.md` file into a consuming repository as `AGENTS.md`, replace
+its `{{SPECIFICATION_URL}}` placeholder with the tag-pinned URL, and then
+customize only the project-specific instructions. Run
 `python scripts/validate_catalog.py` before committing.
