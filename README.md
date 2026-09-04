@@ -56,6 +56,7 @@ perform inheritance or merge documents.
 
 ### Profiles
 
+- [browser-extension](browser-extension/SPEC.md)
 - [python-library](python-library/SPEC.md)
 - [python-cli-application](python-cli-application/SPEC.md)
 - [python-service-application](python-service-application/SPEC.md)
