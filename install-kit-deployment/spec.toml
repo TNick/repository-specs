@@ -1,0 +1,3 @@
+id = "install-kit-deployment"
+version = "1.0.0"
+extends = ["../systemd-deployment"]

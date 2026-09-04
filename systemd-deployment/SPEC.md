@@ -30,7 +30,7 @@ select that Docker-and-Compose-oriented capability.
 ## Repository layout
 
 - Authored units and related assets MUST live under a clearly named deployment
-  directory such as `deploy/systemd/`.
+  directory such as `deploy/systemd/` or an install-kit tree under `deploy/`.
 - Example environment files MUST be safe to commit and MUST list every
   supported setting without real credentials.
 - Generated units MUST identify their source and regeneration command.

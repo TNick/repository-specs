@@ -1,0 +1,10 @@
+id = "python-typescript-map-app"
+version = "1.0.0"
+extends = [
+  "../python-service-application",
+  "../qwc-map-spa",
+  "../containerized-deployment",
+  "../external-schema-persistence",
+  "../playwright-browser-e2e",
+  "../install-kit-deployment",
+]

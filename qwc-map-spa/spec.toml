@@ -1,0 +1,3 @@
+id = "qwc-map-spa"
+version = "1.0.0"
+extends = ["../typescript-base"]

@@ -50,9 +50,13 @@ perform inheritance or merge documents.
 - [react-vite-ui](react-vite-ui/SPEC.md)
 - [http-service](http-service/SPEC.md)
 - [relational-persistence](relational-persistence/SPEC.md)
+- [external-schema-persistence](external-schema-persistence/SPEC.md)
 - [containerized-deployment](containerized-deployment/SPEC.md)
 - [systemd-deployment](systemd-deployment/SPEC.md)
+- [install-kit-deployment](install-kit-deployment/SPEC.md)
 - [multilingual-web-application](multilingual-web-application/SPEC.md)
+- [qwc-map-spa](qwc-map-spa/SPEC.md)
+- [playwright-browser-e2e](playwright-browser-e2e/SPEC.md)
 
 ### Profiles
 
@@ -64,6 +68,7 @@ perform inheritance or merge documents.
 - [typescript-library-workspace](typescript-library-workspace/SPEC.md)
 - [typescript-web-application](typescript-web-application/SPEC.md)
 - [python-typescript-app](python-typescript-app/SPEC.md)
+- [python-typescript-map-app](python-typescript-map-app/SPEC.md)
 - [schema-driven-polyglot-workspace](schema-driven-polyglot-workspace/SPEC.md)
 - [go-web-service](go-web-service/SPEC.md)
 - [qgis-plugin](qgis-plugin/SPEC.md)
