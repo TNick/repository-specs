@@ -135,6 +135,8 @@ specification under `scripts/`:
 - `scripts/check_python_blocks.py` — block-comment validation and `--fix`.
 - `scripts/run_in_project_env.py` — platform-specific `uv run` wrapper.
 - `templates/pre-commit-config.yaml` — pre-commit hook wiring.
+- `templates/Makefile` — platform environment, lint, delint, test, and check
+  targets.
 
 Consuming repositories SHOULD copy these files into their own `scripts/` and
 customize exclusions, source suffixes, and package paths as needed. They MUST
