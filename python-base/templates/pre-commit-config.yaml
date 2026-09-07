@@ -1,0 +1,28 @@
+repos:
+  - repo: local
+    hooks:
+      - id: ruff-check
+        name: ruff check
+        entry: python scripts/run_in_project_env.py ruff check
+        language: system
+        types: [python]
+      - id: ruff-format
+        name: ruff format
+        entry: python scripts/run_in_project_env.py ruff format
+        language: system
+        types: [python]
+      - id: file-lengths
+        name: check file lengths
+        entry: python scripts/run_in_project_env.py python scripts/check_file_lengths.py
+        language: system
+        pass_filenames: false
+      - id: python-blocks
+        name: check python block comments
+        entry: python scripts/run_in_project_env.py python scripts/check_python_blocks.py --fix
+        language: system
+        pass_filenames: false
+      - id: ty
+        name: ty check
+        entry: python scripts/run_in_project_env.py python -m ty check src
+        language: system
+        pass_filenames: false

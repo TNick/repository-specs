@@ -7,12 +7,14 @@ truth and target a supported, explicitly declared Python version.
 
 - Use four-space indentation, type hints for new code, and Google-style
   docstrings.
-- Configure one formatter and linter with an 80-column human-authored limit.
+- Configure one formatter and linter with an 80-column source-code limit.
 - Run type checking and pytest through the documented project command.
 - Keep runtime configuration in environment variables or explicit config
   files; never commit secrets.
 - Keep tests under `tests/`, mirroring the package layout.
 - Use an editable, lockfile-backed development workflow (`uv` is preferred).
+- Use platform-specific UV environments: `.venv-win` on Windows and
+  `.venv-lnx` on Linux/WSL/macOS. Never create or use a shared `.venv`.
 
 ## Code style
 
@@ -30,10 +32,10 @@ truth and target a supported, explicitly declared Python version.
   narrowing instead of `getattr()` escape hatches.
 - Prefer `attrs` `@define` and `field(...)` for data objects over the standard
   library `dataclass`.
-- Human-authored Python source, tests, configuration, and documentation MUST
-  be no longer than 400 lines. Generated files, lockfiles, and vendored files
-  are exempt. Split an oversized module into a package while re-exporting its
-  public API.
+- Source-code files MUST be no longer than 400 lines. Test
+  files, documentation, configuration, generated files, lockfiles, and
+  vendored files are exempt. Split an oversized source module into a package
+  while re-exporting its public API.
 - Code MUST be divided into short logical blocks. A block should start after
   a blank line, then a one- or two-line comment that briefly explains its
   purpose, followed by one to five lines of code. Avoid trailing inline
@@ -112,7 +114,30 @@ into smaller operations or have a documented reason to remain together.
 - Ruff MUST enable its `D` docstring rules with the Google convention,
   annotation rules, and an 80-character limit. `ruff format --check` MUST run
   in the normal lint command.
+- The repository MUST provide a `delint` command that runs `ruff check --fix
+  --unsafe-fixes`, `ruff format`, and the Python block-comment fixer.
 - A repository MUST run a checked-in script that enforces the 400-line limit
-  and the blank-line/comment/block-size convention. Formatter output alone is
-  not sufficient to enforce this semantic layout rule.
+  for source-code files, excluding test files, and the
+  blank-line/comment/block-size convention. Formatter output alone is not
+  sufficient to enforce this semantic layout rule.
+- Pre-commit MUST run project tools through the selected platform environment;
+  hooks MUST NOT depend on an activated shell environment or bare system
+  `python`. The block-comment hook MUST use its `--fix` mode.
 - CI and pre-commit MUST invoke the same checks as the developer lint command.
+
+## Copyable tooling
+
+The canonical, dependency-free script templates are included in this
+specification under `scripts/`:
+
+- `scripts/_common.py` — source-tree walking and generated-tree exclusions.
+- `scripts/check_file_lengths.py` — source-only 400-line enforcement.
+- `scripts/check_python_blocks.py` — block-comment validation and `--fix`.
+- `scripts/run_in_project_env.py` — platform-specific `uv run` wrapper.
+- `templates/pre-commit-config.yaml` — pre-commit hook wiring.
+
+Consuming repositories SHOULD copy these files into their own `scripts/` and
+customize exclusions, source suffixes, and package paths as needed. They MUST
+not add the specification repository as a runtime or development dependency.
+The copied scripts are repository-owned and may evolve independently while
+retaining the requirements above.
