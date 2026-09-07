@@ -12,6 +12,9 @@ truth and target a supported, explicitly declared Python version.
 - Keep runtime configuration in environment variables or explicit config
   files; never commit secrets.
 - Keep tests under `tests/`, mirroring the package layout.
+- Every new source module containing executable behavior MUST have a
+  corresponding test file. Empty modules, import-only modules, and modules
+  containing only constants are exempt.
 - Use an editable, lockfile-backed development workflow (`uv` is preferred).
 - Use platform-specific UV environments: `.venv-win` on Windows and
   `.venv-lnx` on Linux/WSL/macOS. Never create or use a shared `.venv`.
@@ -124,6 +127,24 @@ into smaller operations or have a documented reason to remain together.
   hooks MUST NOT depend on an activated shell environment or bare system
   `python`. The block-comment hook MUST use its `--fix` mode.
 - CI and pre-commit MUST invoke the same checks as the developer lint command.
+- Forgejo Actions MUST run the full project test command on every push. The
+  CI job is the only place where the full suite is expected to run.
+
+## Agent test-scope rules
+
+Agents MUST NOT run the full test suite during development or bug fixing.
+They MUST identify the tests relevant to the changed behavior and run only
+those test files, for example:
+
+```text
+uv run pytest tests/unit/package/test_feature.py
+```
+
+Agents MUST add a test file whenever they add a source module containing
+executable behavior. The test file should mirror the source package layout
+and use the repository's test-file naming convention. This requirement does
+not apply to empty modules, import-only modules, or modules containing only
+constants.
 
 ## Copyable tooling
 
@@ -137,6 +158,7 @@ specification under `scripts/`:
 - `templates/pre-commit-config.yaml` — pre-commit hook wiring.
 - `templates/Makefile` — platform environment, lint, delint, test, and check
   targets.
+- `templates/forgejo/workflows/test.yml` — push-triggered full-suite CI.
 
 Consuming repositories SHOULD copy these files into their own `scripts/` and
 customize exclusions, source suffixes, and package paths as needed. They MUST

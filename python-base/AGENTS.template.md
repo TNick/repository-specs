@@ -27,6 +27,24 @@ Ruff, Ty, and repository check scripts run from the selected environment.
 Keep the copied scripts local to the consuming repository; do not add the
 specification repository as a dependency.
 
+## Test scope
+
+Agents are prohibited from running the full test suite while developing or
+fixing a bug. Determine which test files cover the changed behavior and run
+only those files, for example:
+
+```text
+uv run pytest tests/unit/package/test_feature.py
+```
+
+The Forgejo Actions workflow runs the full suite after changes are pushed;
+that CI run is the full-suite verification boundary.
+
+Whenever you create a source module containing executable behavior, create a
+corresponding test file in the mirrored test tree. Empty modules,
+import-only modules, and modules containing only constants do not require a
+test file.
+
 Public design records are in `design/`. If the root `README.md` or
 `AGENTS.md` declares `Design records: private`, read them from
 `playground/design/` instead. Read the applicable numbered design and plan
